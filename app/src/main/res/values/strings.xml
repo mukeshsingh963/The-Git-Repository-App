@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">The Git Repo App</string>
+    <string name="add_item_tab_text">Add New Repository</string>
+    <string name="et_username_hint">Username</string>
+    <string name="et_repo_name_hint">Repository Name</string>
+    <string name="submit_btn">Submit</string>
+    <string name="img_back_content">Back Arrow</string>
+    <string name="img_dlt_content">Delete</string>
+    <string name="share_btn">Share</string>
+    <string name="open_btn">Open in browser</string>
+
+</resources>

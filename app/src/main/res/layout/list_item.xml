@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/style_ract">
+
+    <data>
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:baselineAligned="false"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:baselineAligned="false"
+                    android:layout_margin="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/app_name"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/tv_desc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxLines="2"
+                            android:textColor="@color/colorBlack"
+                            android:text="@string/app_name"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:onClick="@{clickListener}"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/delete_btn"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="@color/colorWhite"
+                            android:contentDescription="@string/img_dlt_content"
+                            android:src="@drawable/deleterounded" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:onClick="@{clickListener}"
+                    android:gravity="center"
+                    >
+
+                    <Button
+                        android:id="@+id/share_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:focusable="true"
+                        android:text="@string/share_btn"
+                        android:backgroundTint="@color/colorWhite"
+                        android:textColor="@color/colorBlack"
+                        android:layout_marginEnd="8dp"
+                        android:padding="8dp" />
+
+                    <Button
+                        android:id="@+id/browser_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        style="@style/ButtonStyleMedium"
+                        android:backgroundTint="@color/colorWhite"
+                        android:textColor="@color/colorBlack"
+                        android:text="@string/open_btn"
+                        android:layout_marginEnd="8dp"
+                        android:padding="8dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+</layout>

@@ -1,0 +1,95 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/backArrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:contentDescription="@string/img_back_content"
+                        android:layout_gravity="center"
+                        android:onClick="@{clickListener}"
+                        android:src="@drawable/ic_backspace" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/dimen_10dp"
+                        android:textStyle="bold"
+                        android:text="@string/add_item_tab_text"
+                        android:layout_gravity="center"
+                        android:textColor="@color/colorBlack"/>
+
+                </LinearLayout>
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/dimen_8dp"
+                android:layout_marginEnd="@dimen/dimen_16dp">
+
+                <EditText
+                    android:id="@+id/id_user_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dimen_10dp"
+                    android:background="@drawable/style_ract"
+                    android:layout_marginTop="@dimen/dimen_12dp"
+                    android:hint="@string/et_username_hint" />
+
+                <EditText
+                    android:id="@+id/id_repo_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dimen_10dp"
+                    android:background="@drawable/style_ract"
+                    android:layout_marginTop="@dimen/dimen_12dp"
+                    android:fitsSystemWindows="true"
+                    android:hint="@string/et_repo_name_hint"
+                    android:inputType="textPersonName"
+                    />
+
+                <Button
+                    android:id="@+id/checkMark"
+                    android:layout_width="@dimen/dimen_product_horizontal_image_size"
+                    android:layout_height="wrap_content"
+                    android:text="@string/submit_btn"
+                    android:onClick="@{clickListener}"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dimen_30dp"
+                    android:textColor="@color/colorBlack"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
