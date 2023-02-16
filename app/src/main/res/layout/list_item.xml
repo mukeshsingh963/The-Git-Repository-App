@@ -104,7 +104,6 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        style="@style/ButtonStyleMedium"
                         android:backgroundTint="@color/colorWhite"
                         android:textColor="@color/colorBlack"
                         android:text="@string/open_btn"

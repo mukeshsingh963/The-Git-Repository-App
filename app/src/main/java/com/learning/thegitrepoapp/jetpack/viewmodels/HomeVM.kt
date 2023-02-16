@@ -25,13 +25,8 @@ class HomeVM @Inject constructor(
     val dbLiveData = repo.liveData
 
     val liveData = Transformations.switchMap(useCase.getData()){
-        Log.d("jamun", it.toString())
-        val liveData = MutableLiveData<ItemModel>()
-        if(isApiSuccessful(it)) {
-            liveData.postValue((it as ResourceState.Success).body as ItemModel)
-        } else {
-            liveData.postValue(null)
-        }
+        val liveData = MutableLiveData<ResourceState<ItemModel>>()
+        liveData.postValue(it)
         return@switchMap liveData
 
     }

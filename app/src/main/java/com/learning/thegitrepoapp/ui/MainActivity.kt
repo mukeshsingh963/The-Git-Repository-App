@@ -3,6 +3,8 @@ package com.learning.thegitrepoapp.ui
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
@@ -21,6 +23,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityMainBinding
     private val viewModel by viewModels<HomeVM>()
+    private val handler = Handler(Looper.getMainLooper())
     private lateinit var adapter: ReposAdapter
 
     private var listener: (Int, ItemModel, Int) -> Unit = { adappterPosition, model, action ->
@@ -52,8 +55,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.idRecyclerView.adapter = adapter
 
         binding.fbAddNote.setOnClickListener {
-            val intent = Intent(this, AddItemActivity::class.java)
-            startActivity(intent)
+            handler.postDelayed({
+                val intent = Intent(this, AddItemActivity::class.java)
+                startActivity(intent)
+            }, 100)
+
+
         }
     }
 

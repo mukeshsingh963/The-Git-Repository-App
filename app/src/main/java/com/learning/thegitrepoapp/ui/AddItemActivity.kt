@@ -11,6 +11,9 @@ import com.learning.thegitrepoapp.R
 import com.learning.thegitrepoapp.databinding.ActivityAddItemBinding
 import com.learning.thegitrepoapp.jetpack.model.ItemModel
 import com.learning.thegitrepoapp.jetpack.model.RepoRequest
+import com.learning.thegitrepoapp.jetpack.module.ResourceState
+import com.learning.thegitrepoapp.jetpack.module.isApiFailed
+import com.learning.thegitrepoapp.jetpack.module.isApiSuccessful
 import com.learning.thegitrepoapp.jetpack.usecase.observe
 import com.learning.thegitrepoapp.jetpack.viewmodels.HomeVM
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,24 +37,21 @@ class AddItemActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun setUpObserver() {
         observe(viewModels.liveData) {
-            Log.d("jamun123", it.toString())
-            if (it.url.isNotEmpty()) {
-                this.model = it
-                Toast.makeText(
-                    this@AddItemActivity,
-                    "Repository Added Successfully",
-                    Toast.LENGTH_SHORT
-                ).show()
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
-            } else if (!it.message.isNullOrEmpty()) {
-                Toast.makeText(
-                    this@AddItemActivity,
-                    it.message,
-                    Toast.LENGTH_SHORT
-                ).show()
-            }else{
+            if (isApiSuccessful(it)){
+                Log.d("jamun123", it.toString())
+                val itemModel = (it as ResourceState.Success).body as ItemModel
+                if (itemModel.url.isNotEmpty()) {
+                    this.model = itemModel
+                    Toast.makeText(
+                        this@AddItemActivity,
+                        "Repository Added Successfully",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            }else if (isApiFailed(it)){
                 Toast.makeText(
                     this@AddItemActivity,
                     "Please check the names Again",

@@ -25,12 +25,12 @@ class AppRepoImpl @Inject constructor(
 
 
     override suspend fun fetchData(model : RepoRequest): ResourceState<ItemModel> {
-
         val response =  remoteSource.apiGet(model)
-        Log.d("jamun", response.toString())
+
         if (isApiSuccessful(response)){
-            val output = (response as ResourceState.Success).body as ItemModel
-            output.url?.let {
+            val output = (response as ResourceState.Success).body
+            if(output.url.isNotEmpty()){
+                Log.d("output", response.toString())
                 dataSource.dbInsert(output)
             }
         }
