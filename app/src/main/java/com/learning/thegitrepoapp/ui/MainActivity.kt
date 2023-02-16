@@ -54,26 +54,21 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         adapter = ReposAdapter(this, listener)
         binding.idRecyclerView.adapter = adapter
 
-        binding.fbAddNote.setOnClickListener {
-            handler.postDelayed({
-                val intent = Intent(this, AddItemActivity::class.java)
-                startActivity(intent)
-            }, 100)
-
-
-        }
     }
 
     private fun observer() {
         observe(viewModel.dbLiveData) {
-            if (it.isNotEmpty()) {
-                adapter.updateList(it)
-                Log.d("jamun", it.toString())
-            }
+            Log.d("jamun", "aya hahi ${it.size}")
+            adapter.updateList(it)
         }
     }
 
     override fun onClick(v: View?) {
+    if (v!!.id == R.id.fb_add_note)
+        handler.postDelayed({
+            val intent = Intent(this, AddItemActivity::class.java)
+            startActivity(intent)
+        }, 1000)
     }
 
     fun share(url: String) {

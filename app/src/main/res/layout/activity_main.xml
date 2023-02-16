@@ -33,6 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/dimen_18dp"
+            android:onClick="@{clickListener}"
             android:clickable="true"
             android:contentDescription="@string/add_item_tab_text"
             android:focusable="true"
