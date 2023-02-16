@@ -19,7 +19,7 @@ class AppRepoImpl @Inject constructor(
 
     override val liveData = dataSource.liveData
 
-    override suspend fun delete(model: ItemModel) {
+    override suspend fun  delete(model: ItemModel) {
         dataSource.dbDelete(model)
     }
 
